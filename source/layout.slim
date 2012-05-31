@@ -1,0 +1,36 @@
+doctype html
+/[if lt IE 7]
+    html.no-js.ie6.lt-ie9.lt-ie8.lt-ie7 lang="en"
+/[if IE 7]
+    html.no-js.ie7.lt-ie9.lt-ie8 lang="en"
+/[if IE 8]
+    html.no-js.ie8.lt-ie9. lang="en"
+/[if gt IE 8]
+    html.no-js lang="en"
+head
+    meta charset="utf-8"
+
+    - if data.page.page_name == 'home'
+        title #{{settings.site_title}}
+    - else
+        title #{{data.page.page_title}} | #{{settings.site_title}}
+
+    meta name="robots" content="index, follow"
+    meta name="viewport" content="width=device-width"
+    meta name="description" content="#{settings.site_description}"
+    meta name="keywords" content="#{settings.site_keywords}"
+
+    == stylesheet_link_tag "screen.css"
+
+    /[if lt IE 9]
+        script src="//html5shiv.googlecode.com/svn/trunk/html5.js"
+
+- if data.page.page_name == true
+    body id="#{{data.page.page_name}}" class="#{page_classes}"
+- else
+    body id="#{page_classes}"
+
+        #page 
+                
+            section id="content"
+                == yield
